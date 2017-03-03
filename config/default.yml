@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  web:
+    image: dabliu/web:latest
+    restart: always
+    volumes:
+      - web_public:/source/public
+      - sockets:/tmp/sockets
+
+  nginx:
+    image: dabliu/nginx:latest
+    ports:
+      - '1234:80'
+    volumes:
+      - web_public:/sources/web/public
+      - sockets:/tmp/sockets
+
+volumes:
+  db:
+  web_public:
+  sockets:
