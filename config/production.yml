@@ -2,11 +2,8 @@ version: '2'
 
 services:
   web:
-    image: dabliu/web:1.0.0
+    image: dabliu/web:v1.0.0
     command: bundle exec puma -e production -b unix:///tmp/sockets/web.sock
-    #command: bundle exec puma -e production -p 80
-    #ports:
-      #- '1234:80'
     environment:
       RAILS_ENV:         production
       DATABASE_HOST:     postgres
@@ -17,7 +14,7 @@ services:
       SECRET_KEY_BASE:   VhmkcZPs65VjnYBTSzKyaUb2EktDrHnFTgbpMcfqGnxHjHTZsFJxzP5kSFEhSVJDXRUk8C7DgyErqd8T
 
   nginx:
-    image: dabliu/nginx:1.0.0
+    image: dabliu/nginx:v1.0.0
     environment:
       WEB_DOMAIN: 'dabliu.com.ar www.dabliu.com.ar'
       WEB_SOCKET_NAME: web

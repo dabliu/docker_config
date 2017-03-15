@@ -1,1 +1,9 @@
 project_name: dabliu
+
+environments:
+  production:
+    machine:
+      host:    'tcp://46.105.50.243:2376'
+      ca_cert: 'certs/ca.pem'
+      cert:    'certs/cert.pem'
+      key:     'certs/key.pem'

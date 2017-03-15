@@ -11,18 +11,19 @@ services:
     image: dabliu/web:latest
     restart: always
     volumes:
-      - web_public:/source/public
+      - web_assets:/source/public
       - sockets:/tmp/sockets
 
   nginx:
     image: dabliu/nginx:latest
+    restart: always
     ports:
       - '1234:80'
     volumes:
-      - web_public:/sources/web/public
+      - web_assets:/sources/web/public
       - sockets:/tmp/sockets
 
 volumes:
   db:
-  web_public:
+  web_assets:
   sockets:
